@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laboratorio 4</title>
+  </head>
+  <body></body>
+  <script>
+    // Module
+
+    const Lab4App = {
+      data: {},
+      // answer inputs on the form
+      htmlAnswerInputs: {},
+      checkPalindrome: (numberText) => {
+        if (typeof numberText === "string" && numberText) {
+          const originalString = t;
+          const reversedString = t.split("").reverse().join("");
+          return originalString === reversedString;
+        }
+      },
+      countCharacters: (countText) => {
+          const uniqueCharacters = {};
+          for (let i = 0; i < countText.length; i++){
+              if (uniqueCharacters[countText[i]]){
+                  uniqueCharacters[countText[i]]++;
+              } else {
+                  uniqueCharacters[countText[i]] = 1;
+              }F
+          }
+          return uniqueCharacters
+      },
+      checkLeapYear = (a) => {
+      //Leap year is divisible by 4
+      return a % 4 === 0;
+      },
+      sumPrimes = (n) => {
+      // All prime numbers only have 2 divisors
+      if (n > 0 && n < 1000000) {
+        let sum = 0;
+        //Keep tracks of how many divisors a number has
+        for (let dividend = n - 1; dividend > 0; dividend--) {
+          let totalDivisors = 0;
+
+          for (let divisor = dividend; divisor > 0; divisor--) {
+            if (dividend % divisor === 0) {
+              totalDivisors++;
+            }
+            if (totalDivisors > 2) {
+              break;
+            }
+          }
+
+          if (totalDivisors === 2) {
+            sum += dividend;
+          }
+        }
+        return sum;
+      }
+      },
+    };
+  </script>
+</html>
