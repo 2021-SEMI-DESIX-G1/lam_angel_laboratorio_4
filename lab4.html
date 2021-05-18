@@ -1,42 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laboratorio 4</title>
-  </head>
-  <body></body>
-  <script>
-    // Module
 
-    const Lab4App = {
-      data: {},
-      // answer inputs on the form
-      htmlAnswerInputs: {},
-      checkPalindrome: (numberText) => {
-        if (typeof numberText === "string" && numberText) {
-          const originalString = t;
-          const reversedString = t.split("").reverse().join("");
-          return originalString === reversedString;
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio 4</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    a,
+    a:visited,
+    a:active {
+      text-decoration: none;
+      color: white;
+    }
+
+    header {
+      position: absolute;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #0f0e0f;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+      font-size: 1.2rem;
+      padding: 0 10px;
+    }
+
+    #github-icon {
+      width: 50px;
+    }
+
+    #author-container {
+      display: flex;
+      transition: 0.3s all;
+      align-items: center;
+    }
+
+    #author-container:hover {
+      color: #bebfc1;
+      transition: 0.3s all;
+    }
+
+    /* Form Section */
+
+    .formSection {
+      height: 50vh;
+      width: 100%;
+      background-color: #0f0e0f;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .formCard {
+      background: #0f0e0f;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .formInput {
+      text-align: center;
+      font-size: 1.5rem;
+      background-color: white;
+      border-radius: 6px;
+      width: 75%;
+      max-width: 600px;
+      min-width: 300px;
+      color: #0f0e0f;
+      box-shadow: 1px 1px 3px 3px #e7e9eb;
+      padding: 15px;
+    }
+
+    .formDescription {
+      width: 50%;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      text-align: justify;
+      padding: 10px 40px;
+    }
+
+    h3 {
+      margin-bottom: 50px;
+      font-size: 3rem;
+    }
+
+    input[type="number"],
+    input[type="text"] {
+      font-size: 1.1rem;
+      padding: 10px;
+      flex-grow: 1;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      font-size: 1.1rem;
+      padding: 5px;
+      margin-top: 20px;
+      border-radius: 5px;
+      background: cornflowerblue;
+    }
+
+    .card-outputs {
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a target="_blank" id="author-container" href="https://github.com/2021-SEMI-DESIX-G1/lam_angel_laboratorio_4">
+      <img src="https://www.logo.wine/a/logo/GitHub/GitHub-Icon-White-Dark-Background-Logo.wine.svg" alt="github_link"
+        id="github-icon" />
+      <span id="author-name">Angel Lam</span>
+    </a>
+    <div id="title-container">
+      <span>Laboratorio #4 - Problemas de aplicación usando JS con HTML</span>
+    </div>
+  </header>
+  <main>
+    <article class="formSection">
+      <section class="formCard">
+        <form id="checkPalindrome" class="formInput" onsubmit="executeAction('checkPalindrome')">
+          <input type="text" id="input-palindrome" placeholder="Inserte un texto" />
+          <input type="submit" value="Revisar" />
+          <div class="card-outputs">
+            <p id="palindromeResult"></p>
+          </div>
+        </form>
+      </section>
+      <section class="formDescription">
+        <h3>Palíndromo</h3>
+        <p>
+          Escribir un formulario que, lea una cadena "t", e imprima en
+          pantalla si un número es un palíndromo de doble base o no.
+          (Palíndromo en base 10 y base 2)
+        </p>
+      </section>
+    </article>
+    <hr />
+    <article class="formSection">
+      <section class="formDescription">
+        <h3>Contar Caracteres</h3>
+        <p>
+          Escribir un formulario que, lea una cadena "t", e imprima en
+          pantalla la cantidad de caracteres de la cadena. Ejemplo: Dado
+          AABBBACAA Se debería retornar que hay 5 A, 3 B, 1 C. El tipo de dato
+          del retorno es a discreción del estudiante.
+        </p>
+      </section>
+      <section class="formCard">
+        <form id="resultCharacters" class="formInput" onsubmit="executeAction('countCharacters')">
+          <input type="text" id="input-characters" placeholder="Hola Mundo" />
+          <input type="submit" value="Revisar" />
+          <div class="card-outputs">
+            <p id="characterResults"></p>
+          </div>
+        </form>
+      </section>
+    </article>
+    <hr />
+    <article class="formSection">
+      <section class="formCard">
+        <form id="resultYear" class="formInput" onsubmit="executeAction('checkYear')">
+          <input type="number" id="input-year" placeholder="2021" />
+          <input type="submit" value="Revisar" />
+          <div class="card-outputs">
+            <p id="yearResults"></p>
+          </div>
+        </form>
+      </section>
+      <section class="formDescription">
+        <h3>Años Bisiestos</h3>
+        <p>
+          Escribir un formulario que, lea un año "a", e imprima en pantalla si
+          ese año es bisiesto o no.
+        </p>
+      </section>
+    </article>
+    <hr />
+    <article class="formSection">
+      <section class="formDescription">
+        <h3>Sumar Primos</h3>
+        <p>
+          Escribir un formulario que, lea un número "n" ( 0 < n < 1000000), e imprima en pantalla la sumatoria de todos
+            los número primos debajo de ese número. Ejemplo: Dado 7 Se debería retornar 18, ya que: 2 + 3 + 5=10 </p>
+      </section>
+      <section class="formCard">
+        <form id="resultPrimes" class="formInput" onsubmit="executeAction('sumPrimes')">
+          <input type="number" id="input-prime" placeholder="10" min="1" max="100000" />
+          <input type="submit" value="Revisar" />
+          <div class="card-outputs">
+            <p id="primeResults"></p>
+          </div>
+        </form>
+      </section>
+    </article>
+  </main>
+</body>
+<script>
+  // Module
+
+  const Lab4App = {
+    data: {
+      answerText: '',
+    },
+    // answer inputs on the form
+    htmlAnswerInputs: {
+      palindromeResult: document.getElementById("palindromeResult"),
+      charactersResult: document.getElementById("characterResults"),
+      yearResult: document.getElementById("yearResults"),
+      primeResult: document.getElementById("primeResults")
+    },
+    checkPalindrome: (t) => {
+      if (typeof t === "string" && t) {
+        const originalString = t;
+        const reversedString = t.split("").reverse().join("");
+        if (originalString === reversedString) {
+          Lab4App.data.answerText = `La cadena ${t} es un palíndromo`;
+        } else {
+          Lab4App.data.answerText = `La cadena ${t} no es un palíndromo`;
         }
-      },
-      countCharacters: (countText) => {
-          const uniqueCharacters = {};
-          for (let i = 0; i < countText.length; i++){
-              if (uniqueCharacters[countText[i]]){
-                  uniqueCharacters[countText[i]]++;
-              } else {
-                  uniqueCharacters[countText[i]] = 1;
-              }F
-          }
-          return uniqueCharacters
-      },
-      checkLeapYear = (a) => {
-      //Leap year is divisible by 4
-      return a % 4 === 0;
-      },
-      sumPrimes = (n) => {
+      } else {
+        Lab4App.data.answerText = `Error, introduzca una cadena.`;
+      }
+    },
+    countCharacters: (t) => {
+      const uniqueCharacters = {};
+      for (let i = 0; i < t.length; i++) {
+        if (uniqueCharacters[t[i]]) {
+          uniqueCharacters[t[i]]++;
+        } else {
+          uniqueCharacters[t[i]] = 1;
+        }
+      }
+      Lab4App.data.answerText = `${JSON.stringify(uniqueCharacters)}`
+    },
+    checkLeapYear: (a) => {
+      if (a === '') {
+        Lab4App.data.answerText = `Error, introduzca un número`;
+      }
+      else if (a % 4 === 0) {
+        Lab4App.data.answerText = `El año ${a} es bisiesto`;
+      } else {
+        Lab4App.data.answerText = `El año ${a} no es bisiesto`;
+      }
+    },
+    sumPrimes: (n) => {
       // All prime numbers only have 2 divisors
       if (n > 0 && n < 1000000) {
         let sum = 0;
@@ -57,9 +279,38 @@
             sum += dividend;
           }
         }
-        return sum;
+        Lab4App.data.answerText = `La suma de todos los números primos por debajo de ${n} es: ${sum}`;
+      } else {
+        Lab4App.data.answerText = `No introdujo un número entre 0 y 1000000`;
       }
-      },
-    };
-  </script>
+    },
+  };
+
+  const executeAction = (type) => {
+    event.preventDefault();
+    switch (type) {
+      case 'checkPalindrome':
+        const palindromeInput = document.getElementById("input-palindrome").value;
+        Lab4App.checkPalindrome(palindromeInput);
+        Lab4App.htmlAnswerInputs.palindromeResult.innerHTML = Lab4App.data.answerText;
+        break;
+      case 'countCharacters':
+        const charactersInput = document.getElementById("input-characters").value;
+        Lab4App.countCharacters(charactersInput);
+        Lab4App.htmlAnswerInputs.charactersResult.innerHTML = Lab4App.data.answerText;
+        break;
+      case 'checkYear':
+        const yearInput = document.getElementById("input-year").value;
+        Lab4App.checkLeapYear(yearInput);
+        Lab4App.htmlAnswerInputs.yearResult.innerHTML = Lab4App.data.answerText;
+        break;
+      case 'sumPrimes':
+        const primeInput = document.getElementById("input-prime").value;
+        Lab4App.sumPrimes(primeInput);
+        Lab4App.htmlAnswerInputs.primeResult.innerHTML = Lab4App.data.answerText;
+        break;
+    }
+  }
+</script>
+
 </html>
